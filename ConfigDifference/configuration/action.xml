@@ -1,0 +1,16 @@
+<object name = "condition">
+    <attribute name="usewith"/>
+    <attribute name="value2"/>
+    <attribute name="objactename"/>
+    <attribute name="action"/>
+    <attribute name="description"/>
+    <attribute name="type"/>
+    <attribute name="action" key="Yes"/>
+    <attribute name="_rowstamp" rule="remove"/>
+    <attribute name="href" rule="remove"/>
+    <attribute name="dispvalue" rule="remove"/>
+    <attribute name="actionid" rule="remove"/>
+    <attribute name="type_description" rule="remove"/>
+    <attribute name="usewith_description" rule="remove"/>
+</object>
+    

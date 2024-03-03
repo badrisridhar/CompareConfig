@@ -1,0 +1,11 @@
+<object name = "condition">
+    <attribute name="conditionnum" key="Yes"/>
+    <attribute name="expression"/>
+    <attribute name="description"/>
+    <attribute name="type"/>
+    <attribute name="_rowstamp" rule="remove"/>
+    <attribute name="href" rule="remove"/>
+    <attribute name="type_description" rule="remove"/>
+    <attribute name="conditionid" rule="remove"/>
+</object>
+    

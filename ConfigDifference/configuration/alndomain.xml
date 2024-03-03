@@ -1,0 +1,10 @@
+<object name = "alndomain">
+    <attribute name="domainid" rule="getFromParent" key="Yes"/>
+    <attribute name="value" key="Yes"/>
+    <attribute name="valueid"/>
+    <attribute name="_rowstamp" rule="remove"/>
+    <attribute name="href" rule="remove"/>
+    <attribute name="localref" rule="remove"/>
+    <attribute name="alndomainid" rule="remove"/>
+</object>
+    
