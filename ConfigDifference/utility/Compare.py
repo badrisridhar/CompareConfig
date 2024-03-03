@@ -20,7 +20,7 @@ class Compare:
            rule = ReadXml.getRule()
            keyfld = rule[3]
                
-           print (key)
+           #print (key)
            insource = []
            intarget = []
            notmatching = []
@@ -58,7 +58,7 @@ class Compare:
                #print('s_dict:',s_dict)
                #print('t_dict:',t_dict)
                if not not t_dict: 
-                   diff = DeepDiff(s_dict[0],t_dict[0], ignore_nan_inequality=True)
+                   diff = DeepDiff(t_dict[0],s_dict[0], ignore_nan_inequality=True)
                    #print(diff)
                    if('values_changed' in diff.keys()):
                        difference = json.dumps(diff['values_changed'])
@@ -66,12 +66,16 @@ class Compare:
                          #print(s_dict)
                        keyfield = ""
                        for keyfld1 in keyfld.keys():
-                           keyfield = keyfield + s_dict[0][keyfld1]+"~"
+                           if(keyfield == ""):
+                               keyfield = keyfield + s_dict[0][keyfld1]
+                           else:
+                               keyfield = keyfield +"~"+ s_dict[0][keyfld1]
+                           
                        notmatching.append([keyfield,difference])
            keyfldarr = []        
            for keyfld1 in keyfld.keys():
                keyfldarr.append(keyfld1)
-           print (keyfldarr)
+           #print (keyfldarr)
            df_all = sdf.merge(tdf.drop_duplicates(), on=keyfldarr,how='left', indicator=True)
            #print(df_all.values.tolist())
            df1_only = df_all[df_all['_merge'] == 'left_only']
@@ -80,7 +84,10 @@ class Compare:
            for index, row in df1_only.iterrows():
                keyfield = ""
                for keyfld1 in keyfld.keys():
-                   keyfield = keyfield + row[keyfld1]+"~"
+                   if(keyfield == ""):
+                       keyfield = keyfield + row[keyfld1]
+                   else:
+                       keyfield = keyfield +"~" + row[keyfld1]
                insource.append(keyfield)
            #print(df1_only)
            #insource.append(df1_only['conditionnum'])
@@ -94,7 +101,10 @@ class Compare:
            for index, row in df1_only.iterrows():
                keyfield = ""
                for keyfld1 in keyfld.keys():
-                   keyfield = keyfield + row[keyfld1]+"~"
+                   if(keyfield == ""):
+                       keyfield = keyfield + row[keyfld1]
+                   else:
+                       keyfield = keyfield +"~" + row[keyfld1]
                insource.append(keyfield)
            
            #intarget.append(df1_only['conditionnum'])
@@ -108,7 +118,10 @@ class Compare:
            output = []
            keyfieldstr = ""
            for keyfld1 in keyfld.keys():
-               keyfieldstr = keyfieldstr + keyfld1+"~"
+               if(keyfieldstr == ""):
+                   keyfieldstr = keyfieldstr + keyfld1
+               else:
+                   keyfieldstr = keyfieldstr + "~" + keyfld1
            
            output.append([keyfieldstr,"Reason","Difference"])
            
@@ -129,7 +142,7 @@ class Compare:
            for row in output:
                ws.append(row)
                
-           wb.save('./input/'+key+'.xlsx')
+           wb.save('./output/'+key+'.xlsx')
 
            
            #df = pd.DataFrame(output)

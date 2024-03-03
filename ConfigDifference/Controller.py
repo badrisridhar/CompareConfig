@@ -11,8 +11,12 @@ from utility import ProcessInput as pi
 from utility import DataDict as dd
 from utility import Compare as comp
 import pandas as pd
+import datetime
 
 import warnings
+
+ts = datetime.datetime.now()
+print("Start Time: ", ts)
 
 readExcel = re.ReadExcel(filename = './input/Input.xlsx')
 inputData = readExcel.getInputData()
@@ -87,6 +91,8 @@ for input1 in inputData:
     
     print("Comparison Completed")
     
+te = datetime.datetime.now()
+print("End Time: ", te)
     
     
     #print(json.dumps(out[0]))
